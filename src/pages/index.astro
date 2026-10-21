@@ -1,25 +1,91 @@
 ---
+import { Icon } from "astro-icon/components";
 import Layout from "../layouts/Layout.astro";
+import { stack } from "../data/stack";
 
 const title = "Que onda, soy zHolyWhite";
-const letters = title.split("");
+let letterIndex = 0;
+
+const words = title.split(" ").map((word) =>
+  Array.from(word).map((letter) => ({
+    letter,
+    index: letterIndex++,
+  })),
+);
+
+const about = [
+  "I'm zHolyWhite, and my real name is Khaled. I've been practicing programming for four years. Recently, I've been learning offensive cybersecurity and game development with Unity.",
+  "I enjoy learning new things. I have knowledge of graphic design, 3D modeling, pixel art, Blender, DevOps, reverse engineering, rendering, robotics, computer optimization, and Linux distributions.",
+];
 ---
 
 <Layout>
-  <main class="flex min-h-screen flex-col items-center justify-center px-6 text-center">
-    <h1 class="reveal font-minecraft text-4xl leading-tight sm:text-6xl">
-      {letters.map((letter, i) => (
-        <span
-          class="title-letter"
-          style={`animation-delay: ${i * 40}ms`}
-        >
-          {letter === " " ? "\u00A0" : letter}
-        </span>
-      ))}
-    </h1>
+  <main class="container-page portfolio">
+    <section class="hero" aria-labelledby="hero-title">
+      <h1
+        id="hero-title"
+        class="hero-title font-minecraft-ten"
+        aria-label={title}
+      >
+        {words.map((word) => (
+          <span class="hero-word" aria-hidden="true">
+            {word.map(({ letter, index }) => (
+              <span
+                class="title-letter"
+                style={`--letter-delay: ${index * 150}ms`}
+              >
+                {letter}
+              </span>
+            ))}
+          </span>
+        ))}
+      </h1>
+    </section>
 
-    <p class="reveal text-muted mt-5 max-w-xl text-base sm:text-lg">
-      Software Developer, aprendiz en Game Dev y Project Manager
-    </p>
+    <section class="content-section" aria-labelledby="about-title">
+      <h2 id="about-title" class="section-title" data-build>
+        About Me
+      </h2>
+
+      <div class="about-copy">
+        {about.map((paragraph) => (
+          <p data-build>{paragraph}</p>
+        ))}
+      </div>
+    </section>
+
+    <section class="content-section" aria-labelledby="stack-title">
+      <h2 id="stack-title" class="section-title" data-build>
+        Stack
+      </h2>
+
+      <div class="stack-groups">
+        {stack.map((group) => (
+          <article class="stack-group">
+            <h3 class="stack-heading font-minecraft" data-build>
+              {group.title}
+            </h3>
+
+            <ul class="stack-list">
+              {group.items.map((item, index) => (
+                <li
+                  class="stack-item"
+                  data-build
+                  style={`--build-delay: ${index * 45}ms`}
+                >
+                  <Icon
+                    name={item.icon}
+                    class="stack-icon"
+                    style={`color: ${item.color}`}
+                    aria-hidden="true"
+                  />
+                  <span>{item.name}</span>
+                </li>
+              ))}
+            </ul>
+          </article>
+        ))}
+      </div>
+    </section>
   </main>
 </Layout>

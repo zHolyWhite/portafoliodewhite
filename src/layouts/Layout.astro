@@ -9,8 +9,8 @@ interface Props {
 }
 
 const {
-  title = "zHolyWhite | Portafolio",
-  description = "Portafolio de zHolyWhite | Software Developer",
+  title = "zHolyWhite | Portfolio",
+  description = "Khaled's portfolio. Software development, Minecraft projects and game development.",
 } = Astro.props;
 ---
 
@@ -23,28 +23,53 @@ const {
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <title>{title}</title>
   </head>
+
   <body>
-    <Background client:load />
+    <Background />
     <Intro client:load />
 
     <slot />
 
     <script>
-      const observer = new IntersectionObserver(
-        (entries) => {
-          for (const entry of entries) {
-            if (entry.isIntersecting) {
-              entry.target.classList.add("is-visible");
+      function initializeBuildAnimations() {
+        if (
+          window.matchMedia("(prefers-reduced-motion: reduce)").matches ||
+          !("IntersectionObserver" in window)
+        ) {
+          return;
+        }
+
+        const elements = document.querySelectorAll<HTMLElement>(
+          "[data-build]:not([data-build-ready])",
+        );
+
+        const observer = new IntersectionObserver(
+          (entries) => {
+            for (const entry of entries) {
+              if (!entry.isIntersecting) continue;
+
+              entry.target.classList.add("is-building");
               observer.unobserve(entry.target);
             }
-          }
-        },
-        { threshold: 0.15 },
-      );
+          },
+          {
+            threshold: 0,
+            rootMargin: "0px 0px -24px 0px",
+          },
+        );
 
-      document.querySelectorAll(".reveal").forEach((element) => {
-        observer.observe(element);
-      });
+        elements.forEach((element) => {
+          element.dataset.buildReady = "true";
+          observer.observe(element);
+        });
+      }
+
+      initializeBuildAnimations();
+
+      document.addEventListener(
+        "astro:page-load",
+        initializeBuildAnimations,
+      );
     </script>
   </body>
 </html>
