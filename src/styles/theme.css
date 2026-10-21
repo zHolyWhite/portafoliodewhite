@@ -1,0 +1,21 @@
+@theme {
+  --color-bg: #0a0a0c;
+  --color-fg: #e7e7ea;
+  --color-accent: #8b5cf6;
+  --color-muted: #8a8a94;
+  --color-surface: #121216;
+
+  --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
+  --font-minecraft: "MinecraftTen", monospace;
+
+  --spacing-section: 7rem;
+  --radius-card: 0.75rem;
+}
+
+@font-face {
+  font-family: "MinecraftTen";
+  src: url("/assets/fonts/MinecraftTen.ttf") format("truetype");
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}

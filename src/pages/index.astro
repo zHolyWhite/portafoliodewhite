@@ -1,16 +1,25 @@
 ---
+import Layout from "../layouts/Layout.astro";
+
+const title = "Que onda, soy zHolyWhite";
+const letters = title.split("");
 ---
 
-<html lang="en">
-	<head>
-		<meta charset="utf-8" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<link rel="icon" href="/favicon.ico" />
-		<meta name="viewport" content="width=device-width" />
-		<meta name="generator" content={Astro.generator} />
-		<title>Astro</title>
-	</head>
-	<body>
-		<h1>Astro</h1>
-	</body>
-</html>
+<Layout>
+  <main class="flex min-h-screen flex-col items-center justify-center px-6 text-center">
+    <h1 class="reveal font-minecraft text-4xl leading-tight sm:text-6xl">
+      {letters.map((letter, i) => (
+        <span
+          class="title-letter"
+          style={`animation-delay: ${i * 40}ms`}
+        >
+          {letter === " " ? "\u00A0" : letter}
+        </span>
+      ))}
+    </h1>
+
+    <p class="reveal text-muted mt-5 max-w-xl text-base sm:text-lg">
+      Software Developer, aprendiz en Game Dev y Project Manager
+    </p>
+  </main>
+</Layout>
