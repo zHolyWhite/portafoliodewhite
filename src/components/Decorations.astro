@@ -1,12 +1,29 @@
 ---
+import { leftDecoration } from "../data/decorations";
+
 const decorations = [
   { src: "/assets/icons/icon2.png", className: "decoration-two" },
-  { src: "/assets/icons/icon3.png", className: "decoration-three" },
   { src: "/assets/icons/icon4.png", className: "decoration-four" },
   { src: "/assets/icons/icon5.png", className: "decoration-five" },
   { src: "/assets/icons/icon6.png", className: "decoration-six" },
 ];
+
+const leftStyle = [
+  `--side-width: ${leftDecoration.width}`,
+  `--side-top: ${leftDecoration.top}`,
+  `--side-offset: ${leftDecoration.offset}`,
+].join("; ");
 ---
+
+<img
+  class="left-page-decoration"
+  src={leftDecoration.src}
+  style={leftStyle}
+  alt=""
+  aria-hidden="true"
+  draggable="false"
+  decoding="async"
+/>
 
 <div class="page-decorations" aria-hidden="true">
   {

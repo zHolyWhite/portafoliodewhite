@@ -214,7 +214,7 @@
     min-height: 3.5rem;
     padding: 0.75rem 1.5rem;
     color: #050505;
-    font-family: var(--font-pixel, "Deltarune", monospace);
+    font-family: var(--font-pixel, "Minecraft", monospace);
     font-size: clamp(1.125rem, 4.5vw, 1.4rem);
     font-weight: 400;
     line-height: 1.3;

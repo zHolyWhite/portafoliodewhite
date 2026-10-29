@@ -4,7 +4,10 @@ import Layout from "../layouts/Layout.astro";
 import ProfileCard from "../components/ProfileCard.astro";
 import ProfileWidgets from "../components/ProfileWidgets.svelte";
 import MusicWidget from "../components/MusicWidget.svelte";
+import VisitsWidget from "../components/VisitsWidget.svelte";
+import GuestbookWidget from "../components/GuestbookWidget.svelte";
 import Decoration from "../components/Decoration.astro";
+import Projects from "../components/Projects.astro";
 import { heroPin } from "../data/decorations";
 import { stack } from "../data/stack";
 
@@ -31,6 +34,7 @@ const iconColor = (color: string) =>
   <div class="forum">
     <div class="forum-side">
       <ProfileCard />
+      <VisitsWidget client:load />
       <MusicWidget client:load />
     </div>
 
@@ -68,6 +72,8 @@ const iconColor = (color: string) =>
           {about.map((paragraph) => <p>{paragraph}</p>)}
         </div>
       </section>
+
+      <Projects />
 
       <section
         id="stack"
@@ -118,6 +124,7 @@ const iconColor = (color: string) =>
           <figure class="random-figure">
             <figcaption>
               Me dijeron gay por pedir que me dijeran cosas para añadir a la web
+              (la quiero mucho)
             </figcaption>
 
             <img
@@ -133,6 +140,7 @@ const iconColor = (color: string) =>
 
     <div class="forum-side forum-right">
       <ProfileWidgets client:visible />
+      <GuestbookWidget client:visible />
     </div>
   </div>
 </Layout>

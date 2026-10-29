@@ -1,0 +1,54 @@
+---
+import { projects } from "../data/projects";
+---
+
+<section
+  id="projects"
+  class="xp-box"
+  aria-labelledby="projects-title"
+  data-build
+>
+  <h2 id="projects-title" class="xp-box-title">Projects</h2>
+
+  <div class="xp-box-body project-list">
+    {
+      projects.map((project, index) => (
+        <article
+          class="project-card"
+          data-build
+          style={`--build-delay: ${index * 80}ms`}
+        >
+          <div class="project-meta">
+            <span class="project-number">
+              {String(index + 1).padStart(2, "0")}
+            </span>
+            <span>{project.category}</span>
+          </div>
+
+          <h3 class="project-title">
+            {project.href ? (
+              <a
+                href={project.href}
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                {project.title}
+                <span aria-hidden="true"> ↗</span>
+              </a>
+            ) : (
+              project.title
+            )}
+          </h3>
+
+          <p class="project-description">{project.description}</p>
+
+          <ul class="project-technologies" aria-label="Technologies">
+            {project.technologies.map((technology) => (
+              <li>{technology}</li>
+            ))}
+          </ul>
+        </article>
+      ))
+    }
+  </div>
+</section>

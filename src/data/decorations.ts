@@ -13,3 +13,10 @@ export const heroPin: DecorationConfig = {
   offsetX: "-0.75rem",
   offsetY: "-1rem",
 };
+
+export const leftDecoration = {
+  src: "/assets/icons/icon3.png",
+  width: "clamp(12rem, 18vw, 20rem)",
+  top: "0",
+  offset: "0.75rem",
+};

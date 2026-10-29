@@ -75,6 +75,7 @@ export const stack: StackGroup[] = [
       { name: "MongoDB", icon: "simple-icons:mongodb", color: "#47A248" },
       { name: "PostgreSQL", icon: "simple-icons:postgresql", color: "#4169E1" },
       { name: "Redis", icon: "simple-icons:redis", color: "#FF4438" },
+      { name: "Supabase", icon: "simple-icons:supabase", color: "#3ECF8E" },
     ],
   },
   {

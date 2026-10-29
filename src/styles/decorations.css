@@ -131,3 +131,29 @@
     right: -1.5rem;
   }
 }
+.left-page-decoration {
+  position: absolute;
+  top: var(--side-top);
+  right: calc(50% + 38rem + var(--side-offset));
+  z-index: 2;
+  display: block;
+  width: var(--side-width);
+  height: auto;
+  max-width: none;
+  pointer-events: none;
+  user-select: none;
+}
+
+@media (max-width: 1550px) {
+  .left-page-decoration {
+    right: auto;
+    left: -3rem;
+  }
+}
+
+@media (max-width: 700px) {
+  .left-page-decoration {
+    left: -5rem;
+    width: 10rem;
+  }
+}

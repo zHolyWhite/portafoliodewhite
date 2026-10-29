@@ -1,10 +1,6 @@
 ---
+import ProfileAvatar from "./ProfileAvatar.svelte";
 import { sections } from "../data/sections";
-
-const username = import.meta.env.PUBLIC_GITHUB_USERNAME?.trim();
-const avatar = username
-  ? `https://github.com/${encodeURIComponent(username)}.png?size=240`
-  : null;
 
 const info = [
   { label: "Name", value: "Khaled" },
@@ -18,21 +14,7 @@ const info = [
   <h2 class="xp-box-title">Profile</h2>
 
   <div class="xp-box-body profile-card">
-    {
-      avatar ? (
-        <img
-          class="profile-avatar"
-          src={avatar}
-          alt=""
-          width="240"
-          height="240"
-          loading="lazy"
-          decoding="async"
-        />
-      ) : (
-        <div class="profile-avatar profile-avatar--empty" aria-hidden="true">z</div>
-      )
-    }
+    <ProfileAvatar client:load />
 
     <p class="profile-name">zHolyWhite</p>
 
@@ -49,7 +31,12 @@ const info = [
   </div>
 </section>
 
-<nav class="xp-box" aria-label="Contents" data-build style="--build-delay: 80ms">
+<nav
+  class="xp-box"
+  aria-label="Contents"
+  data-build
+  style="--build-delay: 80ms"
+>
   <h2 class="xp-box-title">Contents</h2>
 
   <ul class="xp-box-body contents-list">

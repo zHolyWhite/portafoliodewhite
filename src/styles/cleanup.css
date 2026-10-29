@@ -8,6 +8,11 @@ body {
   display: none !important;
 }
 
+.page-shell {
+  position: relative;
+  z-index: 1;
+}
+
 .desktop {
   position: relative;
   z-index: 1;
