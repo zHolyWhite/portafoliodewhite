@@ -1,30 +1,31 @@
 @theme {
-  --color-bg: #0a0a0c;
-  --color-fg: #ffffff;
-  --color-accent: #8b5cf6;
-  --color-muted: #ffffff;
-  --color-surface: #121216;
+  --color-bg: #050505;
+  --color-fg: #f2f2f0;
+  --color-accent: #ffffff;
+  --color-muted: #4a4a48;
+  --color-surface: #f4f4f1;
 
-  --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
+  --font-sans: "Segoe UI", system-ui, ui-sans-serif, sans-serif;
   --font-minecraft: "Minecraft", monospace;
   --font-minecraft-ten: "MinecraftTen", monospace;
+  --font-daydream: "Daydream", monospace;
+  --font-deltarune: "Deltarune", monospace;
 
   --spacing-section: 7rem;
-  --radius-card: 0.75rem;
+  --radius-card: 0.25rem;
 }
 
-@font-face {
-  font-family: "MinecraftTen";
-  src: url("/assets/fonts/MinecraftTen.ttf") format("truetype");
-  font-weight: normal;
-  font-style: normal;
-  font-display: swap;
-}
-
-@font-face {
-  font-family: "Minecraft";
-  src: url("/assets/fonts/minecraft.ttf") format("truetype");
-  font-weight: normal;
-  font-style: normal;
-  font-display: swap;
+:root {
+  --xp-frame: #0a0a0a;
+  --xp-border: #f2f2f0;
+  --xp-panel: #f4f4f1;
+  --xp-panel-soft: #e6e6e2;
+  --xp-panel-border: #111111;
+  --xp-text: #111111;
+  --xp-muted: #4a4a48;
+  --xp-link: #111111;
+  --xp-title-text: #ffffff;
+  --xp-title-bg: #111111;
+  --xp-line: rgb(255 255 255 / 25%);
+  --xp-taskbar-height: 2.5rem;
 }

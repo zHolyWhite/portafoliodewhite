@@ -1,33 +1,35 @@
 html {
   background-color: var(--color-bg);
-  color: var(--color-fg);
-  font-family: var(--font-sans);
+  color: var(--xp-text);
+  font-family: Tahoma, "Segoe UI", Verdana, ui-sans-serif, sans-serif;
   scroll-behavior: smooth;
 }
 
 body {
   min-height: 100vh;
   margin: 0;
+  padding-bottom: calc(var(--xp-taskbar-height) + 0.75rem);
 }
 
 ::selection {
-  background-color: var(--color-accent);
+  background-color: #316ac5;
   color: #ffffff;
 }
 
 ::-webkit-scrollbar {
-  width: 10px;
+  width: 14px;
 }
 
 ::-webkit-scrollbar-track {
-  background: var(--color-bg);
+  background: #e6eefb;
 }
 
 ::-webkit-scrollbar-thumb {
-  background: color-mix(in srgb, var(--color-fg) 15%, transparent);
-  border-radius: 999px;
+  background: linear-gradient(90deg, #f4f8ff, #b7d0f6);
+  border: 1px solid #7fa2dc;
+  border-radius: 4px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: color-mix(in srgb, var(--color-fg) 25%, transparent);
+  background: linear-gradient(90deg, #ffffff, #c9dcf8);
 }

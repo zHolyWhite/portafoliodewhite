@@ -1,0 +1,23 @@
+---
+const decorations = [
+  { src: "/assets/icons/icon2.png", className: "decoration-two" },
+  { src: "/assets/icons/icon3.png", className: "decoration-three" },
+  { src: "/assets/icons/icon4.png", className: "decoration-four" },
+  { src: "/assets/icons/icon5.png", className: "decoration-five" },
+  { src: "/assets/icons/icon6.png", className: "decoration-six" },
+];
+---
+
+<div class="page-decorations" aria-hidden="true">
+  {
+    decorations.map(({ src, className }) => (
+      <img
+        class={`page-decoration ${className}`}
+        src={src}
+        alt=""
+        decoding="async"
+        draggable="false"
+      />
+    ))
+  }
+</div>

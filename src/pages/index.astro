@@ -1,6 +1,11 @@
 ---
 import { Icon } from "astro-icon/components";
 import Layout from "../layouts/Layout.astro";
+import ProfileCard from "../components/ProfileCard.astro";
+import ProfileWidgets from "../components/ProfileWidgets.svelte";
+import MusicWidget from "../components/MusicWidget.svelte";
+import Decoration from "../components/Decoration.astro";
+import { heroPin } from "../data/decorations";
 import { stack } from "../data/stack";
 
 const title = "Que onda, soy zHolyWhite";
@@ -17,75 +22,117 @@ const about = [
   "I'm zHolyWhite, and my real name is Khaled. I've been practicing programming for four years. Recently, I've been learning offensive cybersecurity and game development with Unity.",
   "I enjoy learning new things. I have knowledge of graphic design, 3D modeling, pixel art, Blender, DevOps, reverse engineering, rendering, robotics, computer optimization, and Linux distributions.",
 ];
+
+const iconColor = (color: string) =>
+  color.toUpperCase() === "#FFFFFF" ? "#24292F" : color;
 ---
 
 <Layout>
-  <main class="container-page portfolio">
-    <section class="hero" aria-labelledby="hero-title">
-      <h1
-        id="hero-title"
-        class="hero-title font-minecraft-ten"
-        aria-label={title}
-      >
-        {words.map((word) => (
-          <span class="hero-word" aria-hidden="true">
-            {word.map(({ letter, index }) => (
-              <span
-                class="title-letter"
-                style={`--letter-delay: ${index * 150}ms`}
-              >
-                {letter}
+  <div class="forum">
+    <div class="forum-side">
+      <ProfileCard />
+      <MusicWidget client:load />
+    </div>
+
+    <div class="forum-main">
+      <section class="hero-box" aria-labelledby="hero-title">
+        <Decoration config={heroPin} />
+
+        <h1 id="hero-title" class="hero-title" aria-label={title}>
+          {
+            words.map((word) => (
+              <span class="hero-word" aria-hidden="true">
+                {word.map(({ letter, index }) => (
+                  <span
+                    class="title-letter"
+                    style={`--letter-delay: ${index * 150}ms`}
+                  >
+                    {letter}
+                  </span>
+                ))}
               </span>
-            ))}
-          </span>
-        ))}
-      </h1>
-    </section>
+            ))
+          }
+        </h1>
+      </section>
 
-    <section class="content-section" aria-labelledby="about-title">
-      <h2 id="about-title" class="section-title" data-build>
-        About Me
-      </h2>
+      <section
+        id="about"
+        class="xp-box"
+        aria-labelledby="about-title"
+        data-build
+      >
+        <h2 id="about-title" class="xp-box-title">About Me</h2>
 
-      <div class="about-copy">
-        {about.map((paragraph) => (
-          <p data-build>{paragraph}</p>
-        ))}
-      </div>
-    </section>
+        <div class="xp-box-body about-copy">
+          {about.map((paragraph) => <p>{paragraph}</p>)}
+        </div>
+      </section>
 
-    <section class="content-section" aria-labelledby="stack-title">
-      <h2 id="stack-title" class="section-title" data-build>
-        Stack
-      </h2>
+      <section
+        id="stack"
+        class="xp-box"
+        aria-labelledby="stack-title"
+        data-build
+      >
+        <h2 id="stack-title" class="xp-box-title">Stack</h2>
 
-      <div class="stack-groups">
-        {stack.map((group) => (
-          <article class="stack-group">
-            <h3 class="stack-heading font-minecraft" data-build>
-              {group.title}
-            </h3>
+        <div class="xp-box-body stack-groups">
+          {
+            stack.map((group) => (
+              <article class="stack-group">
+                <h3 class="stack-heading">{group.title}</h3>
 
-            <ul class="stack-list">
-              {group.items.map((item, index) => (
-                <li
-                  class="stack-item"
-                  data-build
-                  style={`--build-delay: ${index * 45}ms`}
-                >
-                  <Icon
-                    name={item.icon}
-                    class="stack-icon"
-                    style={`color: ${item.color}`}
-                    aria-hidden="true"
-                  />
-                  <span>{item.name}</span>
-                </li>
-              ))}
-            </ul>
-          </article>
-        ))}
-      </div>
-    </section>
-  </main>
+                <ul class="stack-list">
+                  {group.items.map((item, index) => (
+                    <li
+                      class="stack-item"
+                      data-build
+                      style={`--build-delay: ${index * 45}ms`}
+                    >
+                      <Icon
+                        name={item.icon}
+                        class="stack-icon"
+                        style={`color: ${iconColor(item.color)}`}
+                        aria-hidden="true"
+                      />
+                      <span>{item.name}</span>
+                    </li>
+                  ))}
+                </ul>
+              </article>
+            ))
+          }
+        </div>
+      </section>
+
+      <section
+        id="extra"
+        class="xp-box"
+        aria-labelledby="extra-title"
+        data-build
+      >
+        <h2 id="extra-title" class="xp-box-title">Extra</h2>
+
+        <div class="xp-box-body">
+          <figure class="random-figure">
+            <figcaption>
+              Me dijeron gay por pedir que me dijeran cosas para añadir a la web
+            </figcaption>
+
+            <img
+              src="/assets/icons/gay.jpg"
+              alt="Imagen aleatoria"
+              loading="lazy"
+              decoding="async"
+            />
+          </figure>
+        </div>
+      </section>
+    </div>
+
+    <div class="forum-side forum-right">
+      <ProfileWidgets client:visible />
+    </div>
+  </div>
 </Layout>

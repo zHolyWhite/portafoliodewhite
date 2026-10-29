@@ -1,0 +1,263 @@
+.forum {
+  display: grid;
+  grid-template-columns: 15rem minmax(0, 1fr) 19rem;
+  align-items: start;
+  gap: 0.9rem;
+}
+
+.forum-side,
+.forum-main {
+  display: grid;
+  align-content: start;
+  gap: 0.9rem;
+  min-width: 0;
+}
+
+.hero-box {
+  padding: 1.25rem 0.25rem 1.1rem;
+  border-bottom: 1px dashed var(--xp-line);
+}
+
+.hero-title {
+  display: flex;
+  flex-wrap: wrap;
+  column-gap: 0.3em;
+  row-gap: 0.15em;
+  margin: 0;
+  color: #ffffff;
+  font-family: "MinecraftTen", monospace;
+  font-size: clamp(1.6rem, 3.6vw, 2.75rem);
+  font-weight: 400;
+  line-height: 1.3;
+}
+
+.hero-title::after {
+  content: "_";
+  animation: blink 1s steps(2, start) infinite;
+}
+
+.hero-word {
+  display: inline-flex;
+  white-space: nowrap;
+}
+
+#about,
+#stack,
+#extra {
+  scroll-margin-top: 0.75rem;
+}
+
+.about-copy {
+  display: grid;
+  gap: 0.9rem;
+}
+
+.about-copy p {
+  margin: 0;
+  color: var(--xp-text);
+  font-size: 0.95rem;
+  line-height: 1.7;
+}
+
+.stack-groups {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1.1rem 1.5rem;
+}
+
+.stack-group {
+  min-width: 0;
+}
+
+.stack-heading {
+  margin: 0;
+  padding-bottom: 0.35rem;
+  color: var(--xp-text);
+  font-family: "Minecraft", monospace;
+  font-size: 0.9rem;
+  font-weight: 400;
+  line-height: 1.5;
+  border-bottom: 1px dashed rgb(17 17 17 / 40%);
+}
+
+.stack-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+  margin: 0.7rem 0 0;
+  padding: 0;
+  list-style: none;
+}
+
+.stack-item {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.2rem 0.65rem;
+  color: var(--xp-text);
+  font-size: 0.76rem;
+  line-height: 1.5;
+  background: #ffffff;
+  border: 1px solid var(--xp-panel-border);
+  border-radius: 999px;
+  transition:
+    transform 150ms ease,
+    box-shadow 150ms ease;
+}
+
+.stack-item:hover {
+  transform: translate(-1px, -1px);
+  box-shadow: 2px 2px 0 var(--xp-panel-border);
+}
+
+.stack-icon {
+  width: 1rem;
+  height: 1rem;
+  flex-shrink: 0;
+}
+
+.profile-card {
+  display: grid;
+  gap: 0.75rem;
+}
+
+.profile-avatar {
+  display: block;
+  width: 100%;
+  aspect-ratio: 1;
+  object-fit: cover;
+  background: var(--xp-panel-soft);
+  border: 1px solid var(--xp-panel-border);
+  border-radius: 0.2rem;
+  filter: grayscale(1) contrast(1.05);
+  transition: filter 300ms ease;
+}
+
+.profile-avatar:hover {
+  filter: none;
+}
+
+.profile-avatar--empty {
+  display: grid;
+  place-items: center;
+  color: var(--xp-text);
+  font-family: "Minecraft", monospace;
+  font-size: 3rem;
+}
+
+.profile-name {
+  margin: 0;
+  color: var(--xp-text);
+  font-family: "Minecraft", monospace;
+  font-size: 1.15rem;
+  line-height: 1.3;
+}
+
+.profile-info {
+  display: grid;
+  margin: 0;
+}
+
+.profile-info div {
+  display: grid;
+  grid-template-columns: 5rem minmax(0, 1fr);
+  gap: 0.5rem;
+  padding: 0.4rem 0;
+  border-bottom: 1px dashed rgb(17 17 17 / 35%);
+}
+
+.profile-info div:last-child {
+  border-bottom: 0;
+}
+
+.profile-info dt {
+  color: var(--xp-muted);
+  font-family: var(--ui-mono);
+  font-size: 0.74rem;
+}
+
+.profile-info dd {
+  margin: 0;
+  color: var(--xp-text);
+  font-size: 0.82rem;
+  font-weight: 600;
+  line-height: 1.4;
+  overflow-wrap: anywhere;
+}
+
+.contents-list {
+  display: grid;
+  margin: 0;
+  list-style: none;
+}
+
+.contents-list li {
+  border-bottom: 1px dashed rgb(17 17 17 / 35%);
+}
+
+.contents-list li:last-child {
+  border-bottom: 0;
+}
+
+.contents-list a {
+  display: block;
+  padding: 0.45rem 0;
+  color: var(--xp-text);
+  font-family: var(--ui-mono);
+  font-size: 0.82rem;
+  text-decoration: none;
+}
+
+.contents-list a::before {
+  content: "> ";
+  opacity: 0.5;
+}
+
+.contents-list a:hover {
+  font-weight: 700;
+}
+
+@keyframes blink {
+  to {
+    visibility: hidden;
+  }
+}
+
+@media (max-width: 1100px) {
+  .forum {
+    grid-template-columns: 14rem minmax(0, 1fr);
+  }
+
+  .forum-right {
+    grid-column: 1 / -1;
+  }
+
+  .forum-right .profile-widgets {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 760px) {
+  .forum {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .forum-right .profile-widgets,
+  .stack-groups {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero-title::after {
+    animation: none;
+  }
+
+  .stack-item {
+    transition: none;
+  }
+
+  .stack-item:hover {
+    transform: none;
+  }
+}

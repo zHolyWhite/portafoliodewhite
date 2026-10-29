@@ -1,0 +1,19 @@
+body {
+  margin: 0;
+  padding-bottom: 0;
+  isolation: isolate;
+}
+
+.taskbar {
+  display: none !important;
+}
+
+.desktop {
+  position: relative;
+  z-index: 1;
+}
+
+.xp-window {
+  border: 0;
+  outline: 0;
+}

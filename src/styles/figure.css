@@ -1,0 +1,22 @@
+.random-figure {
+  display: grid;
+  gap: 0.75rem;
+  width: fit-content;
+  max-width: 100%;
+  margin: 0;
+}
+
+.random-figure figcaption {
+  color: var(--xp-text);
+  font-size: 0.875rem;
+  line-height: 1.5;
+}
+
+.random-figure img {
+  display: block;
+  width: auto;
+  max-width: min(100%, 20rem);
+  height: auto;
+  border: 1px solid var(--xp-panel-border);
+  border-radius: 0.35rem;
+}

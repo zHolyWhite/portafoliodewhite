@@ -1,7 +1,10 @@
 ---
 import "../styles/global.css";
 import Background from "../components/Background.svelte";
+import Decorations from "../components/Decorations.astro";
 import Intro from "../components/Intro.svelte";
+import Window from "../components/Window.astro";
+import { sections } from "../data/sections";
 
 interface Props {
   title?: string;
@@ -20,15 +23,40 @@ const {
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="description" content={description} />
+    <meta name="theme-color" content="#eeebf1" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <title>{title}</title>
+
+    <script is:inline>
+      document.documentElement.dataset.intro = "playing";
+    </script>
   </head>
 
   <body>
     <Background />
     <Intro client:load />
 
-    <slot />
+    <div class="page-shell" id="top">
+      <Decorations />
+
+      <div class="desktop">
+        <Window title="zHolyWhite - Portfolio">
+          <nav class="xp-tabs" aria-label="Sections">
+            {
+              sections.map((section) => (
+                <a class="xp-tab" href={section.href}>
+                  {section.label}
+                </a>
+              ))
+            }
+          </nav>
+
+          <div class="xp-content">
+            <slot />
+          </div>
+        </Window>
+      </div>
+    </div>
 
     <script>
       function initializeBuildAnimations() {

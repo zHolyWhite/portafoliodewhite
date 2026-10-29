@@ -1,16 +1,18 @@
-<div class="pointer-events-none fixed inset-0 -z-10">
-  <div class="wallpaper absolute inset-0"></div>
-  <div class="absolute inset-0 bg-bg/70"></div>
-  <div
-    class="absolute inset-0 bg-[radial-gradient(ellipse_80%_60%_at_50%_-10%,rgba(139,92,246,0.12),transparent_70%)]"
-  ></div>
-</div>
+<div class="page-background" aria-hidden="true"></div>
 
 <style>
-  .wallpaper {
-    background-image: url("/assets/backgrounds/wallpaper.jpg");
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
+  .page-background {
+    position: fixed;
+    inset: 0;
+    z-index: -1;
+    pointer-events: none;
+    background:
+      linear-gradient(
+        135deg,
+        rgb(255 255 255 / 12%),
+        rgb(233 225 242 / 18%)
+      ),
+      url("/assets/backgrounds/wallpaper.jpg") center / cover no-repeat;
+    background-color: #e7e5e9;
   }
 </style>

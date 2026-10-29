@@ -1,0 +1,64 @@
+---
+import { sections } from "../data/sections";
+
+const username = import.meta.env.PUBLIC_GITHUB_USERNAME?.trim();
+const avatar = username
+  ? `https://github.com/${encodeURIComponent(username)}.png?size=240`
+  : null;
+
+const info = [
+  { label: "Name", value: "Khaled" },
+  { label: "Alias", value: "zHolyWhite" },
+  { label: "Coding", value: "4 years" },
+  { label: "Learning", value: "Offensive security, Unity" },
+];
+---
+
+<section class="xp-box" data-build>
+  <h2 class="xp-box-title">Profile</h2>
+
+  <div class="xp-box-body profile-card">
+    {
+      avatar ? (
+        <img
+          class="profile-avatar"
+          src={avatar}
+          alt=""
+          width="240"
+          height="240"
+          loading="lazy"
+          decoding="async"
+        />
+      ) : (
+        <div class="profile-avatar profile-avatar--empty" aria-hidden="true">z</div>
+      )
+    }
+
+    <p class="profile-name">zHolyWhite</p>
+
+    <dl class="profile-info">
+      {
+        info.map((item) => (
+          <div>
+            <dt>{item.label}</dt>
+            <dd>{item.value}</dd>
+          </div>
+        ))
+      }
+    </dl>
+  </div>
+</section>
+
+<nav class="xp-box" aria-label="Contents" data-build style="--build-delay: 80ms">
+  <h2 class="xp-box-title">Contents</h2>
+
+  <ul class="xp-box-body contents-list">
+    {
+      sections.map((section) => (
+        <li>
+          <a href={section.href}>{section.label}</a>
+        </li>
+      ))
+    }
+  </ul>
+</nav>

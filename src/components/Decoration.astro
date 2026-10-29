@@ -1,0 +1,26 @@
+---
+import type { DecorationConfig } from "../data/decorations";
+
+interface Props {
+  config: DecorationConfig;
+}
+
+const { config } = Astro.props;
+
+const variables = [
+  `--decoration-width: ${config.width}`,
+  `--decoration-x: ${config.offsetX}`,
+  `--decoration-y: ${config.offsetY}`,
+].join("; ");
+---
+
+<img
+  class="anchored-decoration"
+  data-corner={config.corner}
+  style={variables}
+  src={config.src}
+  alt=""
+  aria-hidden="true"
+  draggable="false"
+  decoding="async"
+/>

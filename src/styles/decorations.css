@@ -1,0 +1,133 @@
+.page-shell {
+  position: relative;
+  min-height: 100svh;
+  isolation: isolate;
+}
+
+.page-decorations {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  overflow: hidden;
+  pointer-events: none;
+  user-select: none;
+}
+
+.page-decoration {
+  position: absolute;
+  display: block;
+  width: clamp(5rem, 9vw, 9rem);
+  height: auto;
+  max-height: 15rem;
+  object-fit: contain;
+  filter: drop-shadow(0 5px 5px rgb(30 24 38 / 15%));
+}
+
+.decoration-two {
+  top: 23rem;
+  right: max(0.25rem, calc(50% - 39rem));
+  transform: rotate(12deg);
+}
+
+.decoration-three {
+  top: 43%;
+  left: max(0.25rem, calc(50% - 38rem));
+  transform: rotate(10deg);
+}
+
+.decoration-four {
+  top: 61%;
+  right: max(0.25rem, calc(50% - 39rem));
+  transform: rotate(-14deg);
+}
+
+.decoration-five {
+  bottom: 15%;
+  left: max(0.25rem, calc(50% - 39rem));
+  transform: rotate(-12deg);
+}
+
+.decoration-six {
+  right: max(0.25rem, calc(50% - 38rem));
+  bottom: 2rem;
+  transform: rotate(18deg);
+}
+
+.forum-main {
+  isolation: isolate;
+}
+
+.hero-box {
+  position: relative;
+  z-index: 5;
+  overflow: visible;
+}
+
+.anchored-decoration {
+  position: absolute;
+  z-index: 1;
+  display: block;
+  width: var(--decoration-width);
+  height: auto;
+  max-width: none;
+  margin: 0;
+  padding: 0;
+  pointer-events: none;
+  user-select: none;
+}
+
+.anchored-decoration[data-corner="top-right"] {
+  top: var(--decoration-y);
+  right: var(--decoration-x);
+}
+
+.anchored-decoration[data-corner="top-left"] {
+  top: var(--decoration-y);
+  left: var(--decoration-x);
+}
+
+.anchored-decoration[data-corner="bottom-right"] {
+  right: var(--decoration-x);
+  bottom: var(--decoration-y);
+}
+
+.anchored-decoration[data-corner="bottom-left"] {
+  bottom: var(--decoration-y);
+  left: var(--decoration-x);
+}
+
+@media (max-width: 1350px) {
+  .page-decoration {
+    width: 5rem;
+    opacity: 0.8;
+  }
+
+  .decoration-three,
+  .decoration-five {
+    left: -1.75rem;
+  }
+
+  .decoration-two,
+  .decoration-four,
+  .decoration-six {
+    right: -1.75rem;
+  }
+}
+
+@media (max-width: 700px) {
+  .page-decoration {
+    width: 3.5rem;
+    opacity: 0.65;
+  }
+
+  .decoration-three,
+  .decoration-five {
+    left: -1.5rem;
+  }
+
+  .decoration-two,
+  .decoration-four,
+  .decoration-six {
+    right: -1.5rem;
+  }
+}
